@@ -1,0 +1,17 @@
+{
+  "name": "smart_ui_backend",
+  "version": "1.0.0",
+  "description": "The backend server for the SMART-UI project",
+  "main": "api/src/server_https.js",
+  "scripts": {
+    "test": "node api/src/server_https.js"
+  },
+  "author": "Tim Luciani",
+  "license": "MIT",
+  "dependencies": {
+    "csvtojson": "^2.0.8",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "path": "^0.12.7"
+  }
+}
