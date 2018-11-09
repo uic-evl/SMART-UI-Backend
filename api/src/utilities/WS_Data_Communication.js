@@ -1,6 +1,8 @@
 "use strict";
 
-const path  = require("path");
+const path  = require("path"),
+    http = require("http"),
+    app = require('express');
 
 global.Promise = require("bluebird");
 
@@ -8,7 +10,10 @@ module.exports = class WS_Senders {
 
   constructor(config) {
 
-    this.io = require('socket.io').listen(config.port);
+    let server = http.createServer({},app);
+    server.listen(8000);
+
+    this.io = require('socket.io').listen(server, { wsEngine: 'ws' });
     this.socketCount = 0;
 
     /* Setup the connection callbacks*/

@@ -69,7 +69,7 @@ var App = App || {};
   }
 
   function init() {
-    App.debug = true;
+    App.debug = false;
     /* Turn off table searching */
     $.extend( true, $.fn.dataTable.defaults, {"searching": false} );
 

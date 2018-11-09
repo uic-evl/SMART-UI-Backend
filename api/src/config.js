@@ -3,7 +3,7 @@ module.exports = function () {
 
   let scopes = ['identify'];
   let args = {dev:true};
-  let  port = (args.dev) ? 50451 : 50453,
+  let  port = (args.dev) ? 50451 : 50451,
       // change the second catalan.evl.uic.edu to the host of the server
       addr = (args.dev) ? "http://localhost:" + String(port) : "catalan.evl.uic.edu:" + String(port);
 

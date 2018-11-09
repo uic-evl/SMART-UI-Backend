@@ -17,6 +17,8 @@ const express  = require('express')
   const risk_prediction = new R_Utils("../../../public/R/risk_preds_11_18.R", {data: "../../../public/data"})
       , ws_utilities = new WS_Utils({port:8000});
 
+  let processing = false;
+
   /* Middleware */
   app.use(require('cookie-parser')());
   app.use(compression());
@@ -30,28 +32,34 @@ const express  = require('express')
   });
 
   app.get('/risk_predictions', function(req, res) {
-    risk_prediction.execute().then(function(values){
 
-      let predictions = values[0]
-        , weights = values[1];
+    if(!processing) {
+      processing = true;
+      console.log("runing R code");
+      risk_prediction.execute().then(function(values){
 
-      /* Send the weights and predictions to the client */
-      ws_utilities.send("weighted coefficients", weights);
-      ws_utilities.send("risk predictions", predictions);
+        let predictions = values[0]
+            , weights = values[1];
 
-    });
+        processing = false;
+
+        /* Send the weights and predictions to the client */
+        ws_utilities.send("weighted coefficients", weights);
+        ws_utilities.send("risk predictions", predictions);
+
+      });
+    }
 
     res.sendFile(path.join(__dirname + '/../index.html'));
 
   });
 
 // create an HTTPS service
-  if(config.args.dev) {
     app.listen(config.port, function (err) {
       if (err) return console.log(err);
       console.log('Listening at ' + config.address)
     });
-  }
+
 
 })();
 
