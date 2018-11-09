@@ -9,7 +9,7 @@ App.data_listener = function(debug) {
     socket = io.connect('http://localhost:8000', {autoConnect: false});
   }
   else {
-    socket = io.connect('http://catalan.evl.uic.edu:8000', {autoConnect: false, secure:true});
+    socket = io.connect('http://catalan.evl.uic.edu:8000', {autoConnect: false});
   }
 
   return {
