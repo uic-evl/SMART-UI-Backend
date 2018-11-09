@@ -2,11 +2,26 @@
 
 <html>
 <head>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
+  <!-- JS Lib -->
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery-mockjax/1.6.2/jquery.mockjax.min.js"></script>
+  <script type="text/javascript" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.2.0/js.cookie.min.js"></script>
+  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.min.js"></script>
 </head>
+
 <body>
 
-<p>HI</p>
+<table id="weights" class="display" width="100%"></table>
+
+<table id="predictions" class="display" width="100%"></table>
+
+<!-- JS SRC -->
+<script type="text/javascript" src="assets/src/js/utilities/data_listener.js"></script>
+<script type="text/javascript" src="assets/src/js/main.js"></script>
 
 </body>
 </html>

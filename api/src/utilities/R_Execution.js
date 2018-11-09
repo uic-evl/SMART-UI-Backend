@@ -43,9 +43,7 @@ module.exports = class R_Execution {
       });
       
         Promise.all([preds_promise, weights_promise]).then(function(values){
-
-          console.log(preds, weights);
-
+          resolve(values);
         });
 
 

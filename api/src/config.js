@@ -11,6 +11,17 @@ module.exports = function () {
     address:addr,
     port:port,
     scope: scopes,
-    args: args
+    args: args,
+    express_options : {
+      dotfiles: 'ignore',
+      eTag: false,
+      maxAge: '3h',
+      extensions: ['htm', 'html'],
+      index: false,
+      setHeaders: function (res, path, stat) {
+        res.set('x-timestamp', Date.now())
+      },
+      redirect: false,
+    },
   };
 };
